@@ -3,7 +3,7 @@ import { onMounted } from 'vue';
 import { useGetData } from '@/hooks/getData';
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
-const { loading, data, getData } = useGetData();
+const { loading, data, getData, currentUrl } = useGetData();
 
 
 onMounted(async () => {
@@ -19,7 +19,7 @@ onMounted(async () => {
     <div v-if="data">
       <ul class="list-group">
         <li class="list-group-item" v-for="poke in data.results" :key="poke">
-          <router-link :to="`/pokemons/${poke.name}`">{{ poke.name }}</router-link>
+          <RouterLink :to="`/pokemons/${poke.name}`">{{ poke.name }}</RouterLink>
         </li>
       </ul>
       <br>
