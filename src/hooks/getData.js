@@ -5,10 +5,13 @@ export const useGetData = () => {
 
     const data = ref(null);
 
+    const currentUrl = ref('');
+
     const loading = ref(true);
 
     const getData = async (url) => {
         loading.value = true;
+        currentUrl.value = url;
         try {
             const res = await Axios.get(url);
             if (res.status !== 200) {
@@ -28,5 +31,6 @@ export const useGetData = () => {
         getData,
         data,
         loading,
+        currentUrl,
     }
 }
